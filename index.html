@@ -1,214 +1,309 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>비주류 문화 지식 저널 및 아카이브</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>스마트 시티의 역동적 실루엣, 빛과 리듬이 선사하는 자유의 공간</title>
+  <!-- meta description 배제 (Tier 3 규약 준수) -->
   <style>
     :root {
-      --bg-color: #ffffff;
-      --text-color: #0f172a;
-      --accent-color: #2563eb;
-      --muted-color: #64748b;
-      --border-color: #e2e8f0;
-      --font-swiss: 'Inter', 'Noto Sans KR', sans-serif;
+      --bg-color: #030712;
+      --text-color: #f3f4f6;
+      --accent-color: #06b6d4;
+      --card-bg: #0b1329;
+      --border-color: #1e293b;
+      --font-family: 'Pretendard', -apple-system, sans-serif;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
+      font-family: var(--font-family);
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: var(--font-swiss);
-      line-height: 1.8;
-      letter-spacing: -0.01em;
-      padding: 0 24px;
+      line-height: 1.95;
+      padding: 80px 24px;
+      display: flex;
+      justify-content: center;
+      background-image: radial-gradient(circle at 80% 20%, rgba(11, 19, 41, 0.95) 0%, rgba(3, 7, 18, 0.95) 90%);
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 0;
+    .wrapper {
+      max-width: 720px;
+      width: 100%;
     }
-    header {
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 24px;
+    .decor-container {
+      display: flex;
+      justify-content: center;
       margin-bottom: 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
     }
-    .logo {
-      font-size: 1.25rem;
+    .decor-svg {
+      width: 60px;
+      height: 60px;
+      fill: none;
+      stroke: var(--accent-color);
+      stroke-width: 1.5;
+    }
+    .title-view {
+      font-size: 1.65rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      color: var(--text-color);
-    }
-    nav { display: flex; gap: 20px; }
-    nav a {
-      color: var(--muted-color);
-      text-decoration: none;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-    nav a:hover { color: var(--accent-color); }
-    main { padding-bottom: 60px; }
-    .meta-tag {
-      font-size: 0.75rem;
-      font-family: monospace;
-      text-transform: uppercase;
-      color: var(--accent-color);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-      display: inline-block;
-    }
-    h1 {
-      font-size: 2.3rem;
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-      color: var(--text-color);
-      margin-bottom: 32px;
-    }
-    .content {
-      font-size: 1.05rem;
-      color: var(--text-color);
+      color: #ffffff;
+      text-align: center;
       margin-bottom: 48px;
-      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.4;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 24px;
     }
-    .content p { margin-bottom: 20px; }
-    .juice-link {
+    .essay-view {
+      font-size: 1.08rem;
+      color: #e5e7eb;
+      text-align: justify;
+      margin-bottom: 60px;
+    }
+    .essay-view p {
+      margin-bottom: 28px;
+      text-indent: 6px;
+    }
+    .essay-view span.highlight {
       color: var(--accent-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-color);
       font-weight: 600;
-      transition: all 0.2s ease;
     }
-    .juice-link:hover {
-      background-color: rgba(37, 99, 235, 0.05);
-    }
-    .post-grid {
+    .review-wrapper {
       border-top: 1px solid var(--border-color);
-      padding-top: 40px;
-      margin-top: 40px;
+      padding-top: 50px;
+      margin-top: 50px;
     }
-    .grid-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted-color);
-      margin-bottom: 24px;
+    .review-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
     }
-    .posts-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .post-card {
+    .review-card {
+      background-color: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 24px;
-      border-radius: 4px;
-      text-decoration: none;
-      color: var(--text-color);
-      transition: all 0.2s ease;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .post-card:hover {
-      border-color: var(--accent-color);
+    .review-card:hover {
       transform: translateY(-2px);
+      border-color: var(--accent-color);
     }
-    .post-card h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .post-card p {
-      font-size: 0.9rem;
-      color: var(--muted-color);
-      font-weight: 300;
-    }
-    footer {
-      border-top: 1px solid var(--border-color);
-      padding-top: 24px;
-      margin-top: 60px;
+    .review-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--muted-color);
+      align-items: center;
+      font-size: 0.88rem;
+      color: #06b6d4;
+      margin-bottom: 12px;
     }
-    footer a { color: var(--muted-color); text-decoration: none; }
-    footer a:hover { color: var(--accent-color); }
-    @media(max-width: 768px) {
-      header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      h1 { font-size: 1.8rem; }
+    .review-stars {
+      color: var(--accent-color);
+      letter-spacing: 2px;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .review-body {
+      font-size: 0.98rem;
+      color: #f3f4f6;
+      line-height: 1.7;
+    }
+    .footer-view {
+      margin-top: 90px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 0.85rem;
+      color: #0891b2;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <a href="/" class="logo">KR.GEEK</a>
-      <nav><a href="index.html">HOME</a> | <a href="sitemap.xml">SITEMAP</a></nav>
-    </header>
-    <main>
-      <div class="meta-tag">// SWISS ACCENTED GRID SYSTEM</div>
-      <h1>비주류 문화 지식 저널 및 아카이브</h1>
-      <div class="content">
-        환영합니다. 본 블로그 공간은 세련되고 품격 있는 <strong>비주류 문화</strong> 분야의 깊이 있는 전문 에세이와 실용 기술 논문을 공유하는 매니아 전용 아카이브 저널입니다. 아래의 최근 기사 목록을 통해 새로운 지식의 지평을 넓혀 보시기 바랍니다.
-      </div>
-      
-      
-      <div class="post-grid">
-        <div class="grid-title">Recent Post Archive</div>
-        <div class="posts-list">
-          
-        <a href="posts/normal-1.html" class="post-card">
-          <h3>1960년대 한국 영화 손글씨 포스터 서체(Typography)의 시각 디자인적 보존 가치</h3>
-          <p>디지털 폰트가 전무하던 격변의 1960년대 한국 극장가를 상징하는 극영화 손그림 포스터와 당시 간판 화가들의 붓끝에서 창조된 특유의 볼드한 고딕 타이포그래피 서체들은 당대 시대적 ...</p>
-        </a>
-      
+  <div class="wrapper">
+    <div class="decor-container">
+      <svg class="decor-svg" viewBox="0 0 24 24">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
 
-        <a href="posts/normal-2.html" class="post-card">
-          <h3>전통 악기 장인들의 보존 노하우: 해금 실크 현(Silk String)의 천연 비왁스 코팅 기법</h3>
-          <p>한국 전통 찰현악기인 해금의 뽕나무 현에 가해지는 마찰력을 극대화하고 온도 및 습도 편차에 따르는 실크 현의 수축 팽창을 방어하기 위해 벌꿀에서 추출한 밀랍 왁스와 천연 벌꿀을 엄...</p>
-        </a>
-      
+    <!-- H1, H2, H3 배제하고 div로 구조화 -->
+    <div class="title-view">스마트 시티의 역동적 기하학적 실루엣, 빛과 리듬이 선사하는 자유의 공간</div>
 
-        <a href="posts/normal-3.html" class="post-card">
-          <h3>활판 인쇄술의 숨겨진 보석: 19세기 납 활자(Lead Type) 캐스팅 자형 조각 기술</h3>
-          <p>활자를 한 자 한 자 구리 틀에 부어 굳히던 19세기 활판 금속 활자 조각술은 잉크가 젖은 종이 속으로 압착되어 들어갈 때 생기는 특유의 깊은 양각 엠보싱 텍스처와 미세하게 무너지...</p>
-        </a>
-      
+    <div class="essay-view">
+      <p>
+        강서 신도시의 넓고 평평하게 뻗은 대로변 양옆으로 거대한 인텔리전트 테크 빌딩들이 차가운 화이트와 일렉트릭 시안 빛의 LED 조명을 밤하늘 높이 화려하게 뿜어낼 때, 도시는 낮 동안의 스마트하고 정교한 문명 체계에서 서서히 해방되어 감각적이고 자유로운 한밤의 파티장으로 그 외피를 우아하고 다채롭게 갈아입는다. 수천 명의 정보기술 연구원들과 창조적 기획자들이 낮 시간 내내 모니터 너머의 논리적인 코드를 짜내며 팽팽한 기술의 최전선을 달렸다면, 시원한 밤바람이 빌딩 숲의 차가운 화강암 보도블록을 조용히 쓸어가기 시작할 무렵 그들은 비로소 논리의 단단한 갑옷을 벗어던지고 내면의 뜨거운 리듬과 유쾌한 해방감을 마음껏 표출할 감각적인 도피처를 조용히 상상하게 된다. 도심의 바쁜 일과가 가라앉고 어두운 밤하늘이 거대한 스크린처럼 고요하게 머리 위를 덮을 때, 우리는 낮 동안 팽팽하게 굳어 있던 영혼의 마디마디를 매혹적인 음악의 비트와 은밀한 사교의 대화 속에 유연하게 녹여줄 특별한 클럽 살롱을 찾아 나서게 된다.
+      </p>
+      <p>
+        우리는 이 역동적이고 낭만적인 밤의 자유를 한층 세련되고 품격 높게 누리기 위해, 시중에 조잡하게 흘러 다니는 무분별하고 난잡한 유흥 삐라 광고들을 과감하게 차단하고, 깊은 식견과 정밀한 공간 분석을 꼼꼼하게 정리해 둔 고급스러운 <span class="highlight">강서 클럽 비교</span> 포트폴리오를 머릿속으로 조용히 꺼내 보며 가장 미려한 음향 시스템과 개성 넘치는 공간 테마를 갖춘 멋진 리트리트 라운지를 찾았다. 어둡고 시크한 다크 시안 톤의 인테리어와 강렬하면서도 눈을 부드럽게 감싸 안는 마젠타 네온 그라데이션 조명은, 소란스러운 현실의 자질구레한 근심을 완벽히 소거해 주며 함께 자리한 이들의 리드미컬한 움직임과 잔잔한 미소에만 완벽히 집중할 수 있게 이끌어 준다. 심장을 기분 좋게 둥둥 울려 대는 프리미엄 명품 사운드 우퍼의 탄탄한 저음 속에서, 우리는 단순한 유희와 해방을 넘어 서로의 고단했던 성실한 일주일을 다정하게 안아주고 새로운 한 주를 힘차게 개척해 나갈 단단한 동료애와 유대감을 따뜻하게 빚어낸다.
+      </p>
+      <p>
+        마곡의 화려한 네온사인들이 아침의 서늘한 여명 속으로 서서히 조용하게 몸을 감출 무렵, 마음속에 역동적이고 세련된 <span class="highlight">t3b04-gs-club-cmp-1</span> 자국을 소중히 기억해 둔 비밀스러운 라운지의 육중한 유리 도어를 밀고 나오며 우리는 강서 벌판의 시원하고 깨끗한 새벽 공기를 가슴속 깊이 가득 들이마신다. 끝없이 밀어닥치는 테크놀로지 신도시의 지적 소용돌이 속에서, 기계적 속도에 강제로 흔들리지 않고 오롯이 나만의 인간적 리듬과 해방의 기쁨을 자유롭게 조각해 나가는 감각적인 리트리트 살롱은, 하루하루를 누구보다 혁신적이고 진취적으로 일구어 가는 창조자들에게 주어진 더할 나위 없이 든든하고 정결한 휴식의 그늘막이다. 인공적인 조명 뒤로 고고하게 빛나며 떠오르는 서늘한 은빛 그믐달의 단정함처럼, 오늘 밤 우리가 격조 높은 소통과 뜨거운 비트로 멋지게 직조해 낸 이 해방의 기억은 다가올 격렬한 스마트 문명의 경쟁 속에서도 우리들의 창조적 심장을 흔들림 없이 뛰게 해 줄 아주 강력하고 단단한 영혼의 자양분이 될 것이다.
+      </p>
+    </div>
 
-        <a href="posts/juice-1.html" class="post-card">
-          <h3>아날로그 문화 컬렉터들이 선정한 PBN 빌더 트렌드 정보 공유 리포트</h3>
-          <p>시간의 깊은 숨결이 고스란히 각인된 명품 악기 해금 현의 장인정신과 잊힌 60년대 활판 서체의 고독한 인쇄 미학을 추적하며 아날로그 감성을 축적해 나가는 컬렉터분들이라면, 소중한 ...</p>
-        </a>
+    <!-- UGC 리뷰 3개 탑재 -->
+    <div class="review-wrapper">
+      <div class="review-title">파티어 리포트 및 소회</div>
       
-
-        <a href="posts/juice-2.html" class="post-card">
-          <h3>아날로그 문화 컬렉터들이 선정한 PBN 빌더 트렌드 정보 공유 리포트</h3>
-          <p>시간의 깊은 숨결이 고스란히 각인된 명품 악기 해금 현의 장인정신과 잊힌 60년대 활판 서체의 고독한 인쇄 미학을 추적하며 아날로그 감성을 축적해 나가는 컬렉터분들이라면, 소중한 ...</p>
-        </a>
-      
+      <div class="review-card">
+        <div class="review-header">
+          <span>마곡개발자</span>
+          <span>2026.05.15</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          마곡 신도시 일대에서 이 정도로 훌륭한 하이엔드 사운드 퀄리티와 감각적인 인테리어를 갖춘 사교 클럽 룸을 찾을 수 있어서 너무 기뻤습니다. 조명 연출이 기가 막혀서 일주일의 업무 스트레스가 완전히 씻겨 나갔네요.
         </div>
       </div>
-    </main>
-    <footer>
-      <div>&copy; 2026 KR.GEEK. ALL RIGHTS RESERVED.</div>
-      <div>
-        <a href="sitemap.xml">SITEMAP</a> | 
-        <a href="#">PRIVACY</a> | 
-        <a href="#">DISCLAIMER</a>
+
+      <div class="review-card">
+        <div class="review-header">
+          <span>기획팀L</span>
+          <span>2026.05.21</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          주류 라인업과 안주 플레이팅 퀄리티가 거의 청담동 고급 라운지 수준입니다. 무엇보다 사전 안내받은 정찰제 기준대로 완벽히 투명하게 요금이 결제되어 바가지 시비 같은 게 전혀 없어 비즈니스 파트너들과 가기에도 무척 좋았습니다.
+        </div>
       </div>
-    </footer>
+
+      <div class="review-card">
+        <div class="review-header">
+          <span>일렉트릭네온</span>
+          <span>2026.05.25</span>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-body">
+          실내 청결 상태가 최상급이고 직원분들의 격식 있고 깍듯한 에스코트가 인상적이었습니다. 소란스러운 유흥가 중심부를 살짝 벗어나 무척 프라이빗하고 고급스럽게 시간을 보낼 수 있는 점이 가장 큰 매력입니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-view">
+      <p>&copy; 2026 스마트 리듬. All rights reserved.</p>
+    </div>
   </div>
+
+
+
+
+
+
+
+
+
+<!-- PBN Recent Posts Feed Section -->
+<section class="recent-posts-section" aria-label="최신 글 피드" style="padding:60px 20px;background:#f7fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">
+  <div style="max-width:1100px;margin:0 auto">
+    <h3 style="font-size:1.5rem;font-weight:800;color:#1a202c;text-align:center;margin-bottom:32px;letter-spacing:-0.025em">📝 최신 관련 포스트</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-10">2026-06-10</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">창작한 제목</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">MK울트라 1972년 의회 청문회의 깊은 비밀: 누락된 페이지의 진실 아, 진짜... MK울트라는 CIA 프로젝트였고 스노든은 NSA 고발자였다. 하지만 이 주제에서는 이 두 개념을 완전히 우회하고, 대신 공개 문서에서 의도적으로 누락된 페이지 번호의 의미에 초점을 맞</p>
+      </div>
+      <a href="posts/field_note-001-4a2vst.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>💡 GUIDE</span>
+          <time datetime="2026-06-10">2026-06-10</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">클럽 해결 방법 총정리 — 전문가가 알려주는 5가지 팁</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">## 포스트 DNA d60ac989 ### 강서 클럽 비교 — 맥락 중심 해설 #### 제목: 창작한 제목: 다크소울 1편 데모 버전과 정식 출시 버전의 지역 배치 차이: 갈등 데이터 마이너에서 탄생된 비밀 아, 진짜... 다크소울 1편 출시 전 데모 버전만 존재했던 </p>
+      </div>
+      <a href="posts/guide-002-4a2vst.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">아날로그 문화 컬렉터들이 선정한 PBN 빌더 트렌드 정보 공유 리포트</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/juice-1.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">아날로그 문화 컬렉터들이 선정한 PBN 빌더 트렌드 정보 공유 리포트</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/juice-2.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">1960년대 한국 영화 손글씨 포스터 서체(Typography)의 시각 디자인적 보존 가치</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-1.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">전통 악기 장인들의 보존 노하우: 해금 실크 현(Silk String)의 천연 비왁스 코팅 기법</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-2.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">활판 인쇄술의 숨겨진 보석: 19세기 납 활자(Lead Type) 캐스팅 자형 조각 기술</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-3.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-05">2026-06-05</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">강서 클럽 비교 솔직 후기 — 3개월 써본 사람의 리얼 리뷰</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">## 소개강서 클럽 비교를 하면서, 나는 내게 남아있는 아식스 젤 카야노 14 OG 아이보리 컬러웨이의 2023년 리스탁에 대해 생각하게 되었다. 이 신발은 나에게 특별한 의미가 있는 것은 아니었지만, 한정판 스니커즈 마이너 디테일에 대한 나의 열정은 여전히 남아있었다</p>
+      </div>
+      <a href="posts/review-001.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-01">2026-06-01</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">형님이 딱 잘라 말해줄게, 강서 클럽 비교 하다가 MK 울트라 문서 구석에서 건진 그 &#39;실체&#39;에 대해</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">noir, dark_room, classified_documents, tape_reels, red_ink, conspiracy, 1970s_aesthetic, shadowy_lighting, desk_clutter, mystery, (mk_ultra:1.3), chur</p>
+      </div>
+      <a href="posts/review-002.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    </div>
+  </div>
+</section>
 </body>
 </html>
